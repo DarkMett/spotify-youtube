@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthenticateSpotifyController;
+use App\Http\Controllers\LibrarySpotifyController;
+use App\Http\Controllers\YoutubeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::middleware([App\Http\Middleware\SpotifyAuthenticate::class])->group(function () {
+    Route::get('/', [LibrarySpotifyController::class, 'view']);
+    Route::get('/tracks', [LibrarySpotifyController::class, 'getTracksJson']);
+});
+
+
+Route::get('/login/spotify', [AuthenticateSpotifyController::class, 'spotifyLogin'])->name('login');
+Route::get('/callback', [AuthenticateSpotifyController::class, 'spotifyCallback']);
+Route::get('/getVideoIdByName', [YoutubeController::class, 'getVideoIdByName']);
+Route::get('/getVideosByName', [YoutubeController::class, 'getVideosByName']);
+
+Route::get('/welcome', function () {
     return view('welcome');
 });

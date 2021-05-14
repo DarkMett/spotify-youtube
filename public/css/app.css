@@ -1,0 +1,20 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+.form-switch {
+    display: inline-block;
+    width: 123px;
+    float: right;
+}
+
+body {
+    background-color: #e8e8e8 !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+}
+
+.container {
+    z-index: 99999;
+    position: relative;
+}
