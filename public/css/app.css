@@ -18,3 +18,14 @@ body {
     z-index: 99999;
     position: relative;
 }
+.tracks-container {
+    top: 69px;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    overflow: scroll;
+    width: 460px;
+}
+.video-container {
+    height: 560px;
+}

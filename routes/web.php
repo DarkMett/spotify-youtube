@@ -19,6 +19,7 @@ use App\Http\Controllers\YoutubeController;
 Route::middleware([App\Http\Middleware\SpotifyAuthenticate::class])->group(function () {
     Route::get('/', [LibrarySpotifyController::class, 'view']);
     Route::get('/tracks', [LibrarySpotifyController::class, 'getTracksJson']);
+    Route::get('/playlists/{id}', [LibrarySpotifyController::class, 'getPlaylistTracksFormatted']);
 });
 
 
